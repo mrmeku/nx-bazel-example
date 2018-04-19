@@ -1,17 +1,17 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js update
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js start
 
 PATH: 
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/mrmeku/go/bin:/usr/local/bin:/home/mrmeku/.npm-global/bin:/home/mrmeku/go/bin:/usr/local/bin:/home/mrmeku/.npm-global/bin:/home/mrmeku/go/bin:/usr/local/bin:/home/mrmeku/.npm-global/bin
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/mrmeku/.bin:/usr/local/go/bin:/Users/mrmeku/.bin
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  8.10.0
+  9.6.1
 
 Platform: 
-  linux x64
+  darwin x64
 
 npm manifest: 
   {
@@ -20,7 +20,7 @@ npm manifest:
     "license": "MIT",
     "scripts": {
       "ng": "ng",
-      "start": "concurrently \"ibazel run //backend\" \"ibazel run //apps/car-list/src:devserver\"",
+      "start": "build ... && concurrently \"ibazel run //backend\" \"ibazel run //apps/car-list/src:devserver\"",
       "build": "ng build",
       "test": "ng test",
       "lint": "./node_modules/.bin/nx lint && ng lint",
@@ -34,25 +34,29 @@ npm manifest:
       "update": "./node_modules/.bin/nx update",
       "update:check": "./node_modules/.bin/nx update check",
       "update:skip": "./node_modules/.bin/nx update skip",
-      "postinstall": "ngc -p ngc.tsconfig.json"
+      "postinstall": "ngc -p ngc.tsconfig.json",
+      "workspace-schematic": "./node_modules/.bin/nx workspace-schematic"
     },
     "private": true,
     "dependencies": {
-      "@angular/animations": "5.2.7",
+      "@angular-devkit/core": "0.4.6",
+      "@angular-devkit/schematics": "0.4.6",
+      "@angular/animations": "5.2.9",
       "@angular/bazel": "angular/bazel-builds#d09df98b39658463fdfe3567b25a20cdd7130661",
-      "@angular/common": "5.2.7",
-      "@angular/compiler": "5.2.7",
-      "@angular/core": "5.2.7",
-      "@angular/forms": "5.2.7",
-      "@angular/http": "5.2.7",
-      "@angular/platform-browser": "5.2.7",
-      "@angular/platform-browser-dynamic": "5.2.7",
-      "@angular/router": "5.2.7",
+      "@angular/common": "5.2.9",
+      "@angular/compiler": "5.2.9",
+      "@angular/core": "5.2.9",
+      "@angular/forms": "5.2.9",
+      "@angular/http": "5.2.9",
+      "@angular/platform-browser": "5.2.9",
+      "@angular/platform-browser-dynamic": "5.2.9",
+      "@angular/router": "5.2.9",
       "@ngrx/effects": "5.2.0",
       "@ngrx/router-store": "5.2.0",
       "@ngrx/store": "5.2.0",
       "@ngrx/store-devtools": "5.2.0",
-      "@nrwl/nx": "*",
+      "@nrwl/nx": "0.11.0",
+      "@schematics/angular": "0.4.6",
       "concurrently": "3.5.1",
       "core-js": "^2.4.1",
       "rxjs": "^5.5.6",
@@ -60,16 +64,15 @@ npm manifest:
     },
     "devDependencies": {
       "@angular/cli": "1.7.1",
-      "@angular/compiler-cli": "5.2.7",
-      "@angular/language-service": "5.2.7",
+      "@angular/compiler-cli": "5.2.9",
+      "@angular/language-service": "5.2.9",
       "@bazel/ibazel": "^0.3.1",
-      "@nrwl/bazel": "*",
-      "@nrwl/schematics": "*",
+      "@nrwl/bazel": "0.11.0",
+      "@nrwl/schematics": "0.11.0",
       "@types/jasmine": "~2.8.3",
       "@types/jasminewd2": "~2.0.2",
       "@types/node": "~6.0.60",
       "codelyzer": "^4.0.1",
-      "http-server": "0.11.1",
       "jasmine-core": "~2.8.0",
       "jasmine-spec-reporter": "~4.2.1",
       "karma": "~2.0.0",
@@ -111,6 +114,15 @@ Lockfile:
       rxjs "^5.5.6"
       source-map "^0.5.6"
   
+  "@angular-devkit/core@0.4.6":
+    version "0.4.6"
+    resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-0.4.6.tgz#8a0e43f918a933f230d039945dc53612a89c666a"
+    dependencies:
+      ajv "~5.5.1"
+      chokidar "^1.7.0"
+      rxjs "^5.5.6"
+      source-map "^0.5.6"
+  
   "@angular-devkit/schematics@0.3.2":
     version "0.3.2"
     resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.3.2.tgz#09a2268fad61f4f956f42db87913b8748c512a78"
@@ -118,9 +130,16 @@ Lockfile:
       "@ngtools/json-schema" "^1.1.0"
       rxjs "^5.5.6"
   
-  "@angular/animations@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-5.2.7.tgz#a99fe128f3809e3f8082441a6e676992b9352db7"
+  "@angular-devkit/schematics@0.4.6":
+    version "0.4.6"
+    resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.4.6.tgz#700ebe2887ae7e9823509461174cb8100abed8da"
+    dependencies:
+      "@ngtools/json-schema" "^1.1.0"
+      rxjs "^5.5.6"
+  
+  "@angular/animations@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-5.2.9.tgz#220db9fb5a52a193db0023d721b23ddd25a75770"
     dependencies:
       tslib "^1.7.1"
   
@@ -195,64 +214,64 @@ Lockfile:
     optionalDependencies:
       node-sass "^4.7.2"
   
-  "@angular/common@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/common/-/common-5.2.7.tgz#11bb9f00afe91af8d772ecdff83c2e179f9a67a0"
+  "@angular/common@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/common/-/common-5.2.9.tgz#beb25d4434498abae56bd8dc2c01ade3f6c45e81"
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/compiler-cli@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-5.2.7.tgz#3bad9d5e4c25ebc51e1bb67b71b26a97d6d3bbc5"
+  "@angular/compiler-cli@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-5.2.9.tgz#36a069937d50a8a294eda233b5b1b2c71139751f"
     dependencies:
       chokidar "^1.4.2"
       minimist "^1.2.0"
       reflect-metadata "^0.1.2"
       tsickle "^0.27.2"
   
-  "@angular/compiler@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-5.2.7.tgz#31dcc7ac18cc23cb115e76c541b982737ff93ec9"
+  "@angular/compiler@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-5.2.9.tgz#1d03bc1e8b38c259bc58114d691c2140d244f8f5"
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/core@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/core/-/core-5.2.7.tgz#e5607fc39d90f9fe4fbaaeeeb6cdb9371966bfe3"
+  "@angular/core@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/core/-/core-5.2.9.tgz#3daf13ef9aa754b9954ed21da3eb322e8b20f667"
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/forms@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-5.2.7.tgz#a0c41fdb6b8ba2c32653cc3058d5fa47db91fbf8"
+  "@angular/forms@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-5.2.9.tgz#12c45b3a02c398b354f09cc740d914cd904c0c9c"
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/http@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/http/-/http-5.2.7.tgz#a163f6958f12d2665419123861b0d613c1c82afb"
+  "@angular/http@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/http/-/http-5.2.9.tgz#2ffea536e181bc97e2867593d57425ea7853285b"
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/language-service@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-5.2.7.tgz#065fc0d3f8d58b3439e1bafc10c85420e4391756"
+  "@angular/language-service@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-5.2.9.tgz#4838bb6319c99e8f5beb08bdfb392ee9a1173766"
   
-  "@angular/platform-browser-dynamic@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-5.2.7.tgz#91f903c1f73de2fba1004bc31ed1c3117c7f0406"
+  "@angular/platform-browser-dynamic@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-5.2.9.tgz#86075b7bb694861f722ceda29aae186b045c6b7d"
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/platform-browser@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-5.2.7.tgz#cfd86040c25380aabf0322ef47aecc61f23cc532"
+  "@angular/platform-browser@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-5.2.9.tgz#9ee76327b1b3affad68ffa839058661b7704bc2c"
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/router@5.2.7":
-    version "5.2.7"
-    resolved "https://registry.yarnpkg.com/@angular/router/-/router-5.2.7.tgz#691c375fe32f01bea56d169469ad8f254b136af9"
+  "@angular/router@5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/router/-/router-5.2.9.tgz#0369df6e60c6da3a5842c6eb35e3958d4ffe727e"
     dependencies:
       tslib "^1.7.1"
   
@@ -301,24 +320,9 @@ Lockfile:
       tree-kill "^1.0.0"
       webpack-sources "^1.1.0"
   
-  "@nrwl/bazel@*":
-    version "0.10.2"
-    resolved "https://registry.yarnpkg.com/@nrwl/bazel/-/bazel-0.10.2.tgz#6129811d7082ee6ae969f8e22265116f3044efe4"
-    dependencies:
-      app-root-path "^2.0.1"
-      semver "5.4.1"
-      tmp "0.0.33"
-      yargs-parser "9.0.2"
-  
-  "@nrwl/nx@*":
+  "@nrwl/bazel@0.11.0":
     version "0.11.0"
-    resolved "https://registry.yarnpkg.com/@nrwl/nx/-/nx-0.11.0.tgz#b32a506a1852e64d1b124d3d3ea77310842165de"
-    dependencies:
-      jasmine-marbles "0.2.0"
-  
-  "@nrwl/schematics@*":
-    version "0.10.2"
-    resolved "https://registry.yarnpkg.com/@nrwl/schematics/-/schematics-0.10.2.tgz#144a392177894545a0ea25976f03c722e3393d71"
+    resolved "https://registry.yarnpkg.com/@nrwl/bazel/-/bazel-0.11.0.tgz#f0cb43737ab8334717df654896ca2e36de8148b3"
     dependencies:
       "@ngrx/schematics" "5.2.0"
       "@schematics/angular" "0.4.6"
@@ -326,6 +330,27 @@ Lockfile:
       npm-run-all "4.1.2"
       semver "5.4.1"
       tmp "0.0.33"
+      yargs-parser "9.0.2"
+  
+  "@nrwl/nx@0.11.0":
+    version "0.11.0"
+    resolved "https://registry.yarnpkg.com/@nrwl/nx/-/nx-0.11.0.tgz#b32a506a1852e64d1b124d3d3ea77310842165de"
+    dependencies:
+      jasmine-marbles "0.2.0"
+  
+  "@nrwl/schematics@0.11.0":
+    version "0.11.0"
+    resolved "https://registry.yarnpkg.com/@nrwl/schematics/-/schematics-0.11.0.tgz#3f4ed38aaedb1d9039419513a50064c56af34ded"
+    dependencies:
+      "@ngrx/schematics" "5.2.0"
+      "@schematics/angular" "0.4.6"
+      app-root-path "^2.0.1"
+      graphviz "0.0.8"
+      npm-run-all "4.1.2"
+      opn "^5.3.0"
+      semver "5.4.1"
+      tmp "0.0.33"
+      viz.js "^1.8.1"
       yargs-parser "9.0.2"
   
   "@schematics/angular@0.3.2":
@@ -1460,10 +1485,6 @@ Lockfile:
     version "1.1.3"
     resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
   
-  colors@1.0.3:
-    version "1.0.3"
-    resolved "https://registry.yarnpkg.com/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
-  
   colors@1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
@@ -1675,10 +1696,6 @@ Lockfile:
   core-util-is@1.0.2, core-util-is@~1.0.0:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
-  
-  corser@~2.0.0:
-    version "2.0.1"
-    resolved "https://registry.yarnpkg.com/corser/-/corser-2.0.1.tgz#8eda252ecaab5840dcd975ceb90d9370c819ff87"
   
   cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
     version "2.2.2"
@@ -2134,15 +2151,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
     dependencies:
       jsbn "~0.1.0"
-  
-  ecstatic@^3.0.0:
-    version "3.2.0"
-    resolved "https://registry.yarnpkg.com/ecstatic/-/ecstatic-3.2.0.tgz#1b1aee1ca7c6b99cfb5cf6c9b26b481b90c4409f"
-    dependencies:
-      he "^1.1.1"
-      mime "^1.4.1"
-      minimist "^1.1.0"
-      url-join "^2.0.2"
   
   ee-first@1.1.1:
     version "1.1.1"
@@ -2990,6 +2998,12 @@ Lockfile:
     version "4.1.11"
     resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
   
+  graphviz@0.0.8:
+    version "0.0.8"
+    resolved "https://registry.yarnpkg.com/graphviz/-/graphviz-0.0.8.tgz#e599e40733ef80e1653bfe89a5f031ecf2aa4aaa"
+    dependencies:
+      temp "~0.4.0"
+  
   handle-thing@^1.2.5:
     version "1.2.5"
     resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-1.2.5.tgz#fd7aad726bf1a5fd16dfc29b2f7a6601d27139c4"
@@ -3144,7 +3158,7 @@ Lockfile:
       hoek "4.x.x"
       sntp "2.x.x"
   
-  he@1.1.x, he@^1.1.1:
+  he@1.1.x:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
   
@@ -3273,25 +3287,12 @@ Lockfile:
       lodash "^4.17.2"
       micromatch "^2.3.11"
   
-  http-proxy@^1.13.0, http-proxy@^1.16.2, http-proxy@^1.8.1:
+  http-proxy@^1.13.0, http-proxy@^1.16.2:
     version "1.16.2"
     resolved "https://registry.yarnpkg.com/http-proxy/-/http-proxy-1.16.2.tgz#06dff292952bf64dbe8471fa9df73066d4f37742"
     dependencies:
       eventemitter3 "1.x.x"
       requires-port "1.x.x"
-  
-  http-server@0.11.1:
-    version "0.11.1"
-    resolved "https://registry.yarnpkg.com/http-server/-/http-server-0.11.1.tgz#2302a56a6ffef7f9abea0147d838a5e9b6b6a79b"
-    dependencies:
-      colors "1.0.3"
-      corser "~2.0.0"
-      ecstatic "^3.0.0"
-      http-proxy "^1.8.1"
-      opener "~1.4.0"
-      optimist "0.6.x"
-      portfinder "^1.0.13"
-      union "~0.4.3"
   
   http-signature@~1.1.0:
     version "1.1.1"
@@ -4853,11 +4854,7 @@ Lockfile:
     dependencies:
       wrappy "1"
   
-  opener@~1.4.0:
-    version "1.4.3"
-    resolved "https://registry.yarnpkg.com/opener/-/opener-1.4.3.tgz#5c6da2c5d7e5831e8ffa3964950f8d6674ac90b8"
-  
-  opn@^5.1.0:
+  opn@^5.1.0, opn@^5.3.0:
     version "5.3.0"
     resolved "https://registry.yarnpkg.com/opn/-/opn-5.3.0.tgz#64871565c863875f052cfdf53d3e3cb5adb53b1c"
     dependencies:
@@ -4869,7 +4866,7 @@ Lockfile:
     dependencies:
       is-wsl "^1.1.0"
   
-  optimist@0.6.x, optimist@^0.6.1, optimist@~0.6.0:
+  optimist@^0.6.1, optimist@~0.6.0:
     version "0.6.1"
     resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
     dependencies:
@@ -5174,7 +5171,7 @@ Lockfile:
     dependencies:
       find-up "^2.1.0"
   
-  portfinder@^1.0.13, portfinder@^1.0.9, portfinder@~1.0.12:
+  portfinder@^1.0.9, portfinder@~1.0.12:
     version "1.0.13"
     resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.13.tgz#bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9"
     dependencies:
@@ -5396,10 +5393,6 @@ Lockfile:
   qs@6.5.1, qs@~6.5.1:
     version "6.5.1"
     resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
-  
-  qs@~2.3.3:
-    version "2.3.3"
-    resolved "https://registry.yarnpkg.com/qs/-/qs-2.3.3.tgz#e9e85adbe75da0bbe4c8e0476a086290f863b404"
   
   qs@~6.2.0:
     version "6.2.3"
@@ -6670,6 +6663,10 @@ Lockfile:
       fstream "^1.0.2"
       inherits "2"
   
+  temp@~0.4.0:
+    version "0.4.0"
+    resolved "https://registry.yarnpkg.com/temp/-/temp-0.4.0.tgz#671ad63d57be0fe9d7294664b3fc400636678a60"
+  
   through2@^2.0.0:
     version "2.0.3"
     resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
@@ -6971,12 +6968,6 @@ Lockfile:
       is-extendable "^0.1.1"
       set-value "^0.4.3"
   
-  union@~0.4.3:
-    version "0.4.6"
-    resolved "https://registry.yarnpkg.com/union/-/union-0.4.6.tgz#198fbdaeba254e788b0efcb630bc11f24a2959e0"
-    dependencies:
-      qs "~2.3.3"
-  
   unique-filename@^1.1.0:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/unique-filename/-/unique-filename-1.1.0.tgz#d05f2fe4032560871f30e93cbe735eea201514f3"
@@ -7021,10 +7012,6 @@ Lockfile:
   urix@^0.1.0:
     version "0.1.0"
     resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
-  
-  url-join@^2.0.2:
-    version "2.0.5"
-    resolved "https://registry.yarnpkg.com/url-join/-/url-join-2.0.5.tgz#5af22f18c052a000a48d7b82c5e9c2e2feeda728"
   
   url-loader@^0.6.2:
     version "0.6.2"
@@ -7122,6 +7109,10 @@ Lockfile:
       assert-plus "^1.0.0"
       core-util-is "1.0.2"
       extsprintf "^1.2.0"
+  
+  viz.js@^1.8.1:
+    version "1.8.1"
+    resolved "https://registry.yarnpkg.com/viz.js/-/viz.js-1.8.1.tgz#277ab3cf4367c608a95b281a7472083c3e2ee6cf"
   
   vlq@^0.2.2:
     version "0.2.3"
@@ -7505,16 +7496,15 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 127
   Command: sh
-  Arguments: -c ./node_modules/.bin/nx update
-  Directory: /home/mrmeku/nx-bazel-example
+  Arguments: -c build ... && concurrently "ibazel run //backend" "ibazel run //apps/car-list/src:devserver"
+  Directory: /Users/mrmeku/nx-bazel-example
   Output:
   
-      at ProcessTermError.MessageError (/usr/share/yarn/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/share/yarn/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/share/yarn/lib/cli.js:30281:17)
-      at emitTwo (events.js:126:13)
-      at ChildProcess.emit (events.js:214:7)
-      at maybeClose (internal/child_process.js:925:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
+      at ChildProcess.emit (events.js:127:13)
+      at maybeClose (internal/child_process.js:933:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
